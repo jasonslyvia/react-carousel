@@ -18,6 +18,9 @@ var Carousel = React.createClass({displayName: "Carousel",
   componentDidMount: function () {
     var itemWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     var count = React.Children.count(this.props.children);
+    var widths = React.Children.map(this.props.children, function(){
+      return itemWidth;
+    });
     var totalWidth = itemWidth * count;
     var startPos = widths.reduce(function (total, width) {
       total.push(total[total.length - 1] + width);
